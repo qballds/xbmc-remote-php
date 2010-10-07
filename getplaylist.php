@@ -11,7 +11,13 @@ curl_setopt($ch, CURLOPT_URL, $xbmcjsonservice);
 //clear audio playlist
 if(!empty($_GET['argument1']))
 {
+  //clear audio playlist
   $data = '{"jsonrpc": "2.0", "method": "AudioPlaylist.Clear", "id": 1}';
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+  $array = json_decode(curl_exec($ch),true);
+
+  //clear video playlist
+  $data = '{"jsonrpc": "2.0", "method": "VideoPlaylist.Clear", "id": 1}';
   curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
   $array = json_decode(curl_exec($ch),true);
 }
@@ -49,7 +55,7 @@ if (array_key_exists('items', $videoplaylistresults))
   $results = $videoplaylistresults['items'];
   foreach ($results as $value)
   {
-    $inhoud = $value['label'];
+    $inhoud = $value['file'];
     echo $inhoud;
     echo "<br>";
   }
