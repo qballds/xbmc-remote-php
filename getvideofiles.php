@@ -61,7 +61,7 @@ if (array_key_exists('directories', $xbmcresults)) {
     $display = urlencode($value['file']);
     //remove synology eadir from results
     if (fnmatch("*eaDir*",$display,FNM_CASEFOLD)) { } else {
-      echo "<li><a href=getmusicfiles.php?source=$display>$inhoud</a></li>";
+      echo "<li><a href=getvideofiles.php?source=$display>$inhoud</a></li>";
     }
   }
 }
