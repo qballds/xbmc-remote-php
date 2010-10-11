@@ -66,38 +66,47 @@ if ($_GET['action'] == 'AudioPlayer.PlayPause') {
 
 //Action Move up
 if ($_GET['action'] == 'Action.Move.Up') {
-  //fopen("http://localhost:8080/xbmcCmds/xbmcHttp?command=Action(3)", "r");
-  fopen('' . $xbmchttpapi . '/xbmcCmds/xbmcHttp?command=Action(3)', "r");
+  fopen("$xbmchttpapi/xbmcCmds/xbmcHttp?command=Action(3)", "r");
 }
 
 //Action Move down
 if ($_GET['action'] == 'Action.Move.Down') {
-  fopen("http://localhost:8080/xbmcCmds/xbmcHttp?command=Action(4)", "r");
+  fopen("$xbmchttpapi/xbmcCmds/xbmcHttp?command=Action(4)", "r");
 }
 
 //Action Move left
 if ($_GET['action'] == 'Action.Move.Left') {
-  fopen("http://localhost:8080/xbmcCmds/xbmcHttp?command=Action(1)", "r");
+  fopen("$xbmchttpapi/xbmcCmds/xbmcHttp?command=Action(1)", "r");
 }
 
 //Action Move right
 if ($_GET['action'] == 'Action.Move.Right') {
-  fopen("http://localhost:8080/xbmcCmds/xbmcHttp?command=Action(2)", "r");
+  fopen("$xbmchttpapi/xbmcCmds/xbmcHttp?command=Action(2)", "r");
 }
 
 //Action Select
 if ($_GET['action'] == 'Action.Select') {
-  fopen("http://localhost:8080/xbmcCmds/xbmcHttp?command=Action(7)", "r");
+  fopen("$xbmchttpapi/xbmcCmds/xbmcHttp?command=Action(7)", "r");
 }
 
 //Action Previous
 if ($_GET['action'] == 'Action.Previous') {
-  fopen("http://localhost:8080/xbmcCmds/xbmcHttp?command=Action(10)", "r");
+  fopen("$xbmchttpapi/xbmcCmds/xbmcHttp?command=Action(10)", "r");
 }
 
 //Action Show Info
 if ($_GET['action'] == 'Action.Show.Info') {
-  fopen("http://localhost:8080/xbmcCmds/xbmcHttp?command=Action(11)", "r");
+  fopen("$xbmchttpapi/xbmcCmds/xbmcHttp?command=Action(11)", "r");
+}
+
+//Action Show Info
+if ($_GET['action'] == 'Action.Context') {
+  fopen("$xbmchttpapi/xbmcCmds/xbmcHttp?command=Action(117)", "r");
+}
+
+//Action Show Info
+if ($_GET['action'] == 'Action.Stop') {
+  fopen("$xbmchttpapi/xbmcCmds/xbmcHttp?command=Action(13)", "r");
 }
 
 }
@@ -133,7 +142,9 @@ if ($_GET['action'] == 'Decrease.Volume') {
 //echo '' . $xbmchttpapi . '/xbmcCmds/xbmcHttp?command=Action(3)';
 
 echo "<center>";
-echo "<a href=remote.php?action=Action.Move.Up><img src=\"./img/arrow3-up.png\"></a><br>\n";
+echo "<a href=remote.php?action=Action.Stop><img src=\"./img/media28-stop.png\"></a>\n";
+echo "<a href=remote.php?action=Action.Move.Up><img src=\"./img/arrow3-up.png\"></a>\n";
+echo "<a href=remote.php?action=Action.Context><img src=\"./img/letter-c.png\"></a><br>\n";
 
 echo "<a href=remote.php?action=Action.Move.Left><img src=\"./img/arrow3-left.png\"></a>\n";
 echo "<a href=remote.php?action=Action.Select><img src=\"./img/word-ok.png\"></a>\n";
