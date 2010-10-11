@@ -66,7 +66,8 @@ if ($_GET['action'] == 'AudioPlayer.PlayPause') {
 
 //Action Move up
 if ($_GET['action'] == 'Action.Move.Up') {
-  fopen("http://localhost:8080/xbmcCmds/xbmcHttp?command=Action(3)", "r");
+  //fopen("http://localhost:8080/xbmcCmds/xbmcHttp?command=Action(3)", "r");
+  fopen('' . $xbmchttpapi . '/xbmcCmds/xbmcHttp?command=Action(3)', "r");
 }
 
 //Action Move down
@@ -128,6 +129,8 @@ if ($_GET['action'] == 'Decrease.Volume') {
 }
 
 }
+
+//echo '' . $xbmchttpapi . '/xbmcCmds/xbmcHttp?command=Action(3)';
 
 echo "<center>";
 echo "<a href=remote.php?action=Action.Move.Up><img src=\"./img/arrow3-up.png\"></a><br>\n";
