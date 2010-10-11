@@ -22,7 +22,7 @@ foreach ($results as $value)
   //show music sources
   $sourcename = $value['label'];
   $sourcelocation = urlencode($value['file']);
-  echo "<li><a href=getmusicfiles.php?source=$sourcelocation>$sourcename</a><li>";
+  echo "<li><a href=getmusicfiles.php?source=$sourcelocation>$sourcename</a></li>";
 }
 
 echo "</ul></div>";

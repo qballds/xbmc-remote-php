@@ -8,7 +8,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_URL, $xbmcjsonservice);
 
-//clear audio playlist
+//clear playlist
 if(!empty($_GET['argument1']))
 {
   //clear audio playlist
@@ -22,10 +22,13 @@ if(!empty($_GET['argument1']))
   $array = json_decode(curl_exec($ch),true);
 }
 
+//show Audio header
 echo "<div id=\"content\"><p>";
-
-//prepare the field values being posted to the service
 echo "AudioPlaylist.GetItems:<br><br>";
+echo "</p></div>";
+
+//Get audio playlist
+echo "<div id=\"utility\"><ul>";
 $audioplaylistdata = '{"jsonrpc": "2.0", "method": "AudioPlaylist.GetItems", "id": 1}';
 curl_setopt($ch, CURLOPT_POSTFIELDS, $audioplaylistdata);
 $audioplaylistarray = json_decode(curl_exec($ch),true);
@@ -36,15 +39,21 @@ if (array_key_exists('items', $audioplaylistresults))
   foreach ($results as $value)
   {
     $inhoud = $value['file'];
-    echo $inhoud;
-    echo "<br>";
+    echo "<li><a href=getplaylist.php?argument2=dosomething>$inhoud</a></li><br>\n";
   }
 }
+echo "</ul></div>";
 
+//break
 echo "<br>";
 
-//prepare the field values being posted to the service
-echo "VideoPlaylist.GetItems :<br><br>";
+//show video header
+echo "<div id=\"content\"><p>";
+echo "VideoPlaylist.GetItems:<br><br>";
+echo "</p></div>";
+
+//Get video playlist
+echo "<div id=\"utility\"><ul>";
 $videoplaylistdata = '{"jsonrpc": "2.0", "method": "VideoPlaylist.GetItems", "id": 1}';
 curl_setopt($ch, CURLOPT_POSTFIELDS, $videoplaylistdata);
 $videoplaylistarray = json_decode(curl_exec($ch),true);
@@ -56,17 +65,18 @@ if (array_key_exists('items', $videoplaylistresults))
   foreach ($results as $value)
   {
     $inhoud = $value['file'];
-    echo $inhoud;
-    echo "<br>";
+    echo "<li><a href=getplaylist.php?argument2=dosomething>$inhoud</a></li><br>\n";
   }
 }
+echo "</ul></div>";
 
+//break
 echo "<br>";
 
 //clear audio playlist
-echo "<a href=getplaylist.php?argument1=clearplaylist>Clear Playlist</a><br>\n";
-
-echo "</p></div>";
+echo "<div id=\"utility\"><ul>";
+echo "<li><a href=getplaylist.php?argument1=clearplaylist>Clear Playlist</a></li>\n";
+echo "</ul></div>";
 
 include "downline.php";
 
